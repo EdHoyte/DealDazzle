@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace DealDazzle.Controllers
 {
-    public class UserController : Controller
+    public class AccountController : Controller
     {
         private readonly IUserService _userService;
         private readonly IItemService _itemService;
 
 
-        public UserController(IUserService userService, IItemService itemService)
+        public AccountController(IUserService userService, IItemService itemService)
         {
             _userService = userService;
             _itemService = itemService;
