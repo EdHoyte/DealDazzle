@@ -59,16 +59,16 @@ namespace DealDazzle.Controllers
                 Password = loginModel.Password,
                 RememberMe = loginModel.RememberMe
             };
-
+            
             var response = await _userService.LoginUser(payload);
-            return View();
+            return RedirectToAction("Dashboard");
         }
 
         [HttpGet]
         public ActionResult Login()
         {
             
-            return RedirectToAction("Dashboard");
+            return View();
         }
 
 
