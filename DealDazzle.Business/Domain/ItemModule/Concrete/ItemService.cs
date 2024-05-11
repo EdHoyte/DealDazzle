@@ -101,16 +101,16 @@ namespace DealDazzle.Business.Domain.ItemModule.Concrete
 #endregion
 
 		#region SubCategory
-		public async Task<IEnumerable<SubCategory>> GetAllSubCategory()
+		public async Task<IEnumerable<SubCategoryDto>> GetAllSubCategory()
 		{
 
-			IEnumerable<SubCategory> Items = new List<SubCategory>();
+			IEnumerable<SubCategoryDto> Items = new List<SubCategoryDto>();
 
 			var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:7266/api/Item/get-subcategories");
 			var response = await _client.SendAsync(request);
 			var json = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
-			var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiResult<IEnumerable<SubCategory>>>(json);
+			var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiResult<IEnumerable<SubCategoryDto>>>(json);
 			if (result.StatusCode == System.Net.HttpStatusCode.OK)
 			{
 				Items = result.Result;
@@ -123,16 +123,16 @@ namespace DealDazzle.Business.Domain.ItemModule.Concrete
 		#endregion
 
 		#region Category
-		public async Task<IEnumerable<Category>> GetAllCategory()
+		public async Task<IEnumerable<CategoryDto>> GetAllCategory()
 		{
 
-			IEnumerable<Category> Items = new List<Category>();
+			IEnumerable<CategoryDto> Items = new List<CategoryDto>();
 
 			var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:7266/api/Item/get-categories");
 			var response = await _client.SendAsync(request);
 			var json = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
-			var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiResult<IEnumerable<Category>>>(json);
+			var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiResult<IEnumerable<CategoryDto>>>(json);
 			if (result.StatusCode == System.Net.HttpStatusCode.OK)
 			{
 				Items = result.Result;

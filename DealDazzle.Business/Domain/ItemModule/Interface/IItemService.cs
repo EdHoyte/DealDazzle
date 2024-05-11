@@ -15,9 +15,9 @@ namespace DealDazzle.Business.Domain.ItemModule.Interface
 
 		Task<ItemDTO> GetItem(long id);
 		Task<IEnumerable<ItemDTO>> GetAllItems();
-		Task<IEnumerable<Category>> GetAllCategory();
+		Task<IEnumerable<CategoryDto>> GetAllCategory();
 		Task<IEnumerable<ItemDTO>> GetItemsBySubCategoryId(long id);
-		Task<IEnumerable<SubCategory>> GetAllSubCategory();
+		Task<IEnumerable<SubCategoryDto>> GetAllSubCategory();
 		Task<IEnumerable<ItemDTO>> SearchItem(string searchTerm);
 
 

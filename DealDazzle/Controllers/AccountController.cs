@@ -33,14 +33,11 @@ namespace DealDazzle.Controllers
         {
             UserCreatedDTO payload = new UserCreatedDTO
             {
-                Address = model.Address,
-                DateOfBirth = model.Dob,
+                
                 Email = model.Email,
-                FirstName = model.FirstName,
-                Gender = model.Gender,
-                LastName = model.LastName,
+                FullName = model.FullName,
                 Password = model.Password,
-                Phone = model.Phone,
+                Phone = model.Phone
             };
 
             var response = await _userService.RegisterUser(payload);
@@ -71,7 +68,7 @@ namespace DealDazzle.Controllers
         public ActionResult Login()
         {
             
-            return View();
+            return RedirectToAction("Dashboard");
         }
 
 

@@ -11,9 +11,8 @@ namespace DealDazzle.Business.Domain.UserModule.DTO
 	{
         public string Id { get; set; }
         [Required]
-        public string FirstName { get; set; }
-        [Required]
-        public string LastName { get; set; }
+        public string FullName { get; set; }
+
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
@@ -22,13 +21,6 @@ namespace DealDazzle.Business.Domain.UserModule.DTO
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        [Required]
-        public string Gender { get; set; }
-        [Required]
-        public DateTime? Dob { get; set; }
-        [Required]
-        public string Address { get; set; }
-
 
     }
 }

@@ -26,18 +26,18 @@
 					<h3>Log in to enter</h3>
 					<form class="row login_form" asp-action="Login" id="contactForm" novalidate="novalidate">
 						<div class="col-md-12 form-group">
-							<label asp-for="Email" class="control-label"></label>
-							<input asp-for="Email" class="form-control" />
+							<input asp-for="Email" class="form-control" placeholder="Email"/>
 							<span asp-validation-for="Email" class="text-danger"></span>
 						</div>
 						<div class="col-md-12 form-group">
-							<label asp-for="Password" class="control-label"></label>
-							<input asp-for="Password" class="form-control" />
+							<input asp-for="Password" class="form-control" placeholder="Password"/>
 							<span asp-validation-for="Password" class="text-danger"></span>
 						</div>
 						<div class="col-md-12 form-group">
 							<div class="creat_account">
-								<input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+								<input class="" type="checkbox" asp-for="RememberMe" />
+								<label for="RememberMe">Remember Me</label>
+								
 							</div>
 						</div>
 						<div class="hover col-md-12 form-group">

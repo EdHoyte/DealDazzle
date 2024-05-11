@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DealDazzle.Business.Domain.ItemModule.DTO
 {
-	public class Category
+	public class CategoryDto
 	{
 		public string CategoryName { get; set; }
+		public List<SubCategoryDto> SubCategories { get; set; }
 	}
 }
