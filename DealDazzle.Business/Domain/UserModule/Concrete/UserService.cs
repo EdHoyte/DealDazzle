@@ -34,15 +34,24 @@ namespace DealDazzle.Business.Domain.UserModule.Concrete
 
 		public async Task<UserDto> LoginUser(UserLoginDto userData)
 		{
+			UserDto result = new UserDto();
 
 			var content = new StringContent(JsonConvert.SerializeObject(userData), Encoding.UTF8, "application/json");
 			var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7266/api/Account/login");
 			request.Content = content;
 			var response = await _client.SendAsync(request);
 			var json = await response.Content.ReadAsStringAsync();
+			if (response.StatusCode == System.Net.HttpStatusCode.OK)
+			{
+				result = JsonConvert.DeserializeObject<ApiResult<UserDto>>(json).Result;
+				return result;
+			}
+			if(response.StatusCode== System.Net.HttpStatusCode.InternalServerError) 
+			{
+				result.ErrorMessage = "The remote service returned an error";
+			}
 
-			var result = JsonConvert.DeserializeObject<ApiResult<UserDto>>(json);
-			return result.Result;
+			return result;
 		}
 
 		public async Task<ApiResult<UserDto>> LogoutUser()

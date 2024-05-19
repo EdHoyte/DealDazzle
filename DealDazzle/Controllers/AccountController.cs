@@ -41,7 +41,7 @@ namespace DealDazzle.Controllers
             };
 
             var response = await _userService.RegisterUser(payload);
-            return View(response);
+            return RedirectToAction("Login");
         }
         [HttpGet]
         public ActionResult Register()
@@ -51,24 +51,23 @@ namespace DealDazzle.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Login(UserLogin loginModel)
+        public async Task<ActionResult> Login(UserLoginDto loginModel)
         {
-            UserLoginDto payload = new UserLoginDto
-            {
-                Email = loginModel.Email,
-                Password = loginModel.Password,
-                RememberMe = loginModel.RememberMe
-            };
             
-            var response = await _userService.LoginUser(payload);
-            return RedirectToAction("Dashboard");
+            var response = await _userService.LoginUser(loginModel);
+            if (string.IsNullOrEmpty(response.ErrorMessage))
+                return RedirectToAction("Dashboard");
+
+            loginModel.ErrorMessage=response.ErrorMessage;
+            return View(loginModel);
         }
 
         [HttpGet]
         public ActionResult Login()
         {
-            
-            return View();
+            UserLoginDto model = new() { Password = "Roseline07011169508" };
+
+			return View(model);
         }
 
 

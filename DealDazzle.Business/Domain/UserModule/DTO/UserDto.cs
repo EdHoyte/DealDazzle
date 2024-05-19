@@ -22,5 +22,7 @@ namespace DealDazzle.Business.Domain.UserModule.DTO
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        public string ErrorMessage { get; set; }
+
     }
 }
